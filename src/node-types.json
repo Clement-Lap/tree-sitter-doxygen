@@ -1,0 +1,100 @@
+[
+  {
+    "type": "doxygen",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier_with_param",
+          "named": true
+        },
+        {
+          "type": "identifier_without_param",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "identifier_with_param",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "identifier_without_param",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "doxygen",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "@",
+    "named": false
+  },
+  {
+    "type": "author",
+    "named": false
+  },
+  {
+    "type": "brief",
+    "named": false
+  },
+  {
+    "type": "file",
+    "named": false
+  },
+  {
+    "type": "param",
+    "named": false
+  },
+  {
+    "type": "param[in]",
+    "named": false
+  },
+  {
+    "type": "param[out]",
+    "named": false
+  },
+  {
+    "type": "return",
+    "named": false
+  },
+  {
+    "type": "text",
+    "named": true
+  }
+]
