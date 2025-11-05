@@ -15,8 +15,8 @@ module.exports = grammar({
 
     _params_with_briefs: ($) =>
       choice(
-        seq("param", optional(seq(" [", choice($._status), "] "))),
-        seq("params", optional(seq(" [", choice($._status), "] "))),
+        seq("param", optional(seq("[", choice($._status), "]"))),
+        seq("params", optional(seq("[", choice($._status), "]"))),
         "return",
         "returns",
       ),
@@ -31,9 +31,9 @@ module.exports = grammar({
         "deprecated",
         "copyright",
         "date",
+        "brief",
+        "fn",
       ),
-    _codes_with_briefs: ($) => "fn",
-    _codes_without_brief: ($) => "def",
     _prefix: ($) => choice("@", "\\"),
     _status: ($) => choice("in", "out"),
 
@@ -43,10 +43,13 @@ module.exports = grammar({
 
     doxygen: ($) =>
       choice(
-        seq(field("identifier", $._briefs), $.text),
-        seq(field("identifier", $._params_with_briefs), $.variable, $.text),
-        seq(field("identifier", $._codes_with_briefs), $.code, $.text),
-        seq(field("identifier", $._codes_without_brief), $.code),
+        seq(field("identifier", $._briefs), " ", $.text),
+        seq(
+          field("identifier", $._params_with_briefs),
+          " ",
+          $.variable,
+          $.text,
+        ),
       ),
   },
 });

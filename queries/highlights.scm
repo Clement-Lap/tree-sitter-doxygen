@@ -1,4 +1,3 @@
-(identifier_with_param) @keyword
-(identifier_without_param) @keyword
+(identifier) @keyword
 (variable) @variable
 (text) @comment

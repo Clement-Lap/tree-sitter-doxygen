@@ -7,7 +7,18 @@
       "title": "Doxygen",
       "scope": "source.doxygen",
       "highlights": "queries/highlights.scm",
-      "file-types": ["c"],
+      "file-types": [
+        "c",
+        "h",
+        "cpp",
+        "cc",
+        "cxx",
+        "cp",
+        "c++",
+        "hpp",
+        "hh",
+        "hxx"
+      ],
       "injection-regex": "^doxygen$",
       "class-name": "TreeSitterDoxygen"
     }
