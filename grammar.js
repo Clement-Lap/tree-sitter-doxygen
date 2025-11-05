@@ -13,30 +13,40 @@ module.exports = grammar({
   rules: {
     source_file: ($) => repeat(choice($.doxygen, $.text)),
 
+    _params_with_briefs: ($) =>
+      choice(
+        seq("param", optional(seq(" [", choice($._status), "] "))),
+        seq("params", optional(seq(" [", choice($._status), "] "))),
+        "return",
+        "returns",
+      ),
+    _briefs: ($) =>
+      choice(
+        "brief",
+        "file",
+        "author",
+        "authors",
+        "license",
+        "def",
+        "deprecated",
+        "copyright",
+        "date",
+      ),
+    _codes_with_briefs: ($) => "fn",
+    _codes_without_brief: ($) => "def",
+    _prefix: ($) => choice("@", "\\"),
+    _status: ($) => choice("in", "out"),
+
+    variable: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    code: ($) => /[^\n@_]/,
     text: ($) => /[^\n@]+/,
 
-    _keyword_with_param: ($) =>
-      choice("param", "param[in]", "param[out]", "return"),
-
-    _status: ($) => optional(choice("in", "out")),
-
-    _keyword_without_param: ($) => choice("brief", "file", "author"),
-
-    _param: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
-
-    _param_expression: ($) =>
-      seq("@", $._keyword_with_param, " {", $._param, "} ", /[^\n@ ]*/),
-
-    _expression: ($) => seq("@", $._keyword_without_param, " ", /[^\n@]*/),
-
-    identifier_with_param: ($) => seq("@", $._keyword_with_param),
-    identifier_without_param: ($) => seq("@", $._keyword_without_param),
-
-    variable: ($) => $._param,
     doxygen: ($) =>
       choice(
-        seq($.identifier_without_param, $.text),
-        seq($.identifier_with_param, $.variable, $.text),
+        seq(field("identifier", $._briefs), $.text),
+        seq(field("identifier", $._params_with_briefs), $.variable, $.text),
+        seq(field("identifier", $._codes_with_briefs), $.code, $.text),
+        seq(field("identifier", $._codes_without_brief), $.code),
       ),
   },
 });

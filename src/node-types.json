@@ -2,17 +2,92 @@
   {
     "type": "doxygen",
     "named": true,
-    "fields": {},
+    "fields": {
+      "identifier": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": " [",
+            "named": false
+          },
+          {
+            "type": "] ",
+            "named": false
+          },
+          {
+            "type": "author",
+            "named": false
+          },
+          {
+            "type": "authors",
+            "named": false
+          },
+          {
+            "type": "brief",
+            "named": false
+          },
+          {
+            "type": "copyright",
+            "named": false
+          },
+          {
+            "type": "date",
+            "named": false
+          },
+          {
+            "type": "def",
+            "named": false
+          },
+          {
+            "type": "deprecated",
+            "named": false
+          },
+          {
+            "type": "file",
+            "named": false
+          },
+          {
+            "type": "fn",
+            "named": false
+          },
+          {
+            "type": "in",
+            "named": false
+          },
+          {
+            "type": "license",
+            "named": false
+          },
+          {
+            "type": "out",
+            "named": false
+          },
+          {
+            "type": "param",
+            "named": false
+          },
+          {
+            "type": "params",
+            "named": false
+          },
+          {
+            "type": "return",
+            "named": false
+          },
+          {
+            "type": "returns",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "identifier_with_param",
-          "named": true
-        },
-        {
-          "type": "identifier_without_param",
+          "type": "code",
           "named": true
         },
         {
@@ -25,16 +100,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "identifier_with_param",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "identifier_without_param",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "source_file",
@@ -57,12 +122,11 @@
     }
   },
   {
-    "type": "variable",
-    "named": true,
-    "fields": {}
+    "type": " [",
+    "named": false
   },
   {
-    "type": "@",
+    "type": "] ",
     "named": false
   },
   {
@@ -70,7 +134,31 @@
     "named": false
   },
   {
+    "type": "authors",
+    "named": false
+  },
+  {
     "type": "brief",
+    "named": false
+  },
+  {
+    "type": "code",
+    "named": true
+  },
+  {
+    "type": "copyright",
+    "named": false
+  },
+  {
+    "type": "date",
+    "named": false
+  },
+  {
+    "type": "def",
+    "named": false
+  },
+  {
+    "type": "deprecated",
     "named": false
   },
   {
@@ -78,15 +166,27 @@
     "named": false
   },
   {
+    "type": "fn",
+    "named": false
+  },
+  {
+    "type": "in",
+    "named": false
+  },
+  {
+    "type": "license",
+    "named": false
+  },
+  {
+    "type": "out",
+    "named": false
+  },
+  {
     "type": "param",
     "named": false
   },
   {
-    "type": "param[in]",
-    "named": false
-  },
-  {
-    "type": "param[out]",
+    "type": "params",
     "named": false
   },
   {
@@ -94,7 +194,15 @@
     "named": false
   },
   {
+    "type": "returns",
+    "named": false
+  },
+  {
     "type": "text",
+    "named": true
+  },
+  {
+    "type": "variable",
     "named": true
   }
 ]
