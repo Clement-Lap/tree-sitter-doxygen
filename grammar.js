@@ -15,8 +15,12 @@ module.exports = grammar({
 
     _params_with_briefs: ($) =>
       choice(
-        seq("param", optional(seq("[", choice($._status), "]"))),
-        seq("params", optional(seq("[", choice($._status), "]"))),
+        "param",
+        "param[in]",
+        "param[out]",
+        "params",
+        "params[in]",
+        "params[out]",
         "return",
         "returns",
       ),
@@ -38,18 +42,12 @@ module.exports = grammar({
     _status: ($) => choice("in", "out"),
 
     variable: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
-    code: ($) => /[^\n@_]/,
     text: ($) => /[^\n@]+/,
 
     doxygen: ($) =>
       choice(
-        seq(field("identifier", $._briefs), " ", $.text),
-        seq(
-          field("identifier", $._params_with_briefs),
-          " ",
-          $.variable,
-          $.text,
-        ),
+        seq(field("identifier", $._briefs), $.text),
+        seq(field("identifier", $._params_with_briefs), $.variable, $.text),
       ),
   },
 });
