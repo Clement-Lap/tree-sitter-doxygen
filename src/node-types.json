@@ -8,76 +8,16 @@
         "required": true,
         "types": [
           {
-            "type": " [",
-            "named": false
+            "type": "prefix",
+            "named": true
           },
           {
-            "type": "] ",
-            "named": false
+            "type": "text_only",
+            "named": true
           },
           {
-            "type": "author",
-            "named": false
-          },
-          {
-            "type": "authors",
-            "named": false
-          },
-          {
-            "type": "brief",
-            "named": false
-          },
-          {
-            "type": "copyright",
-            "named": false
-          },
-          {
-            "type": "date",
-            "named": false
-          },
-          {
-            "type": "def",
-            "named": false
-          },
-          {
-            "type": "deprecated",
-            "named": false
-          },
-          {
-            "type": "file",
-            "named": false
-          },
-          {
-            "type": "fn",
-            "named": false
-          },
-          {
-            "type": "in",
-            "named": false
-          },
-          {
-            "type": "license",
-            "named": false
-          },
-          {
-            "type": "out",
-            "named": false
-          },
-          {
-            "type": "param",
-            "named": false
-          },
-          {
-            "type": "params",
-            "named": false
-          },
-          {
-            "type": "return",
-            "named": false
-          },
-          {
-            "type": "returns",
-            "named": false
+            "type": "with_params",
+            "named": true
           }
         ]
       }
@@ -86,10 +26,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "code",
-          "named": true
-        },
         {
           "type": "text",
           "named": true
@@ -122,11 +58,17 @@
     }
   },
   {
-    "type": " [",
-    "named": false
+    "type": "text_only",
+    "named": true,
+    "fields": {}
   },
   {
-    "type": "] ",
+    "type": "with_params",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": " ",
     "named": false
   },
   {
@@ -140,10 +82,6 @@
   {
     "type": "brief",
     "named": false
-  },
-  {
-    "type": "code",
-    "named": true
   },
   {
     "type": "copyright",
@@ -170,15 +108,7 @@
     "named": false
   },
   {
-    "type": "in",
-    "named": false
-  },
-  {
     "type": "license",
-    "named": false
-  },
-  {
-    "type": "out",
     "named": false
   },
   {
@@ -186,8 +116,28 @@
     "named": false
   },
   {
+    "type": "param[in]",
+    "named": false
+  },
+  {
+    "type": "param[out]",
+    "named": false
+  },
+  {
     "type": "params",
     "named": false
+  },
+  {
+    "type": "params[in]",
+    "named": false
+  },
+  {
+    "type": "params[out]",
+    "named": false
+  },
+  {
+    "type": "prefix",
+    "named": true
   },
   {
     "type": "return",

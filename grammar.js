@@ -13,7 +13,7 @@ module.exports = grammar({
   rules: {
     source_file: ($) => repeat(choice($.doxygen, $.text)),
 
-    _params_with_briefs: ($) =>
+    with_params: ($) =>
       choice(
         "param",
         "param[in]",
@@ -24,7 +24,7 @@ module.exports = grammar({
         "return",
         "returns",
       ),
-    _briefs: ($) =>
+    text_only: ($) =>
       choice(
         "brief",
         "file",
@@ -38,16 +38,20 @@ module.exports = grammar({
         "brief",
         "fn",
       ),
-    _prefix: ($) => choice("@", "\\"),
-    _status: ($) => choice("in", "out"),
+    prefix: ($) => "@",
+    // _status: ($) => choice("in", "out"),
 
     variable: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
     text: ($) => /[^\n@]+/,
 
     doxygen: ($) =>
       choice(
-        seq(field("identifier", $._briefs), $.text),
-        seq(field("identifier", $._params_with_briefs), $.variable, $.text),
+        seq(field("identifier", seq($.prefix, $.text_only)), $.text),
+        seq(
+          field("identifier", seq($.prefix, $.with_params)),
+          $.variable,
+          $.text,
+        ),
       ),
   },
 });

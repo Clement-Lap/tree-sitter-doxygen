@@ -18,86 +18,32 @@
         ]
       }
     },
-    "_params_with_briefs": {
+    "with_params": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "param"
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": " ["
-                    },
-                    {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "SYMBOL",
-                          "name": "_status"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "] "
-                    }
-                  ]
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            }
-          ]
+          "type": "STRING",
+          "value": "param"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "params"
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": " ["
-                    },
-                    {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "SYMBOL",
-                          "name": "_status"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "] "
-                    }
-                  ]
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            }
-          ]
+          "type": "STRING",
+          "value": "param[in]"
+        },
+        {
+          "type": "STRING",
+          "value": "param[out]"
+        },
+        {
+          "type": "STRING",
+          "value": "params"
+        },
+        {
+          "type": "STRING",
+          "value": "params[in]"
+        },
+        {
+          "type": "STRING",
+          "value": "params[out]"
         },
         {
           "type": "STRING",
@@ -109,7 +55,7 @@
         }
       ]
     },
-    "_briefs": {
+    "text_only": {
       "type": "CHOICE",
       "members": [
         {
@@ -147,50 +93,24 @@
         {
           "type": "STRING",
           "value": "date"
-        }
-      ]
-    },
-    "_codes_with_briefs": {
-      "type": "STRING",
-      "value": "fn"
-    },
-    "_codes_without_brief": {
-      "type": "STRING",
-      "value": "def"
-    },
-    "_prefix": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "@"
         },
         {
           "type": "STRING",
-          "value": "\\"
-        }
-      ]
-    },
-    "_status": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "in"
+          "value": "brief"
         },
         {
           "type": "STRING",
-          "value": "out"
+          "value": "fn"
         }
       ]
+    },
+    "prefix": {
+      "type": "STRING",
+      "value": "@"
     },
     "variable": {
       "type": "PATTERN",
       "value": "[a-zA-Z_][a-zA-Z0-9_]*"
-    },
-    "code": {
-      "type": "PATTERN",
-      "value": "[^\\n@_]"
     },
     "text": {
       "type": "PATTERN",
@@ -206,8 +126,17 @@
               "type": "FIELD",
               "name": "identifier",
               "content": {
-                "type": "SYMBOL",
-                "name": "_briefs"
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "prefix"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "text_only"
+                  }
+                ]
               }
             },
             {
@@ -223,8 +152,17 @@
               "type": "FIELD",
               "name": "identifier",
               "content": {
-                "type": "SYMBOL",
-                "name": "_params_with_briefs"
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "prefix"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "with_params"
+                  }
+                ]
               }
             },
             {
@@ -232,46 +170,12 @@
               "name": "variable"
             },
             {
-              "type": "SYMBOL",
-              "name": "text"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "identifier",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_codes_with_briefs"
-              }
-            },
-            {
-              "type": "SYMBOL",
-              "name": "code"
+              "type": "STRING",
+              "value": " "
             },
             {
               "type": "SYMBOL",
               "name": "text"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "identifier",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_codes_without_brief"
-              }
-            },
-            {
-              "type": "SYMBOL",
-              "name": "code"
             }
           ]
         }
